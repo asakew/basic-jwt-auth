@@ -54,15 +54,15 @@ func HTMLRendering(app *fiber.App) {
 		})
 	})
 
-	app.Get("/admin/dashboard", func(c *fiber.Ctx) error {
+	app.Get("/dashboard", func(c *fiber.Ctx) error {
 		return c.Render("dashboard", fiber.Map{
 			"siteDomain": siteDomain,
 			"fileServer": fileServer,
 		})
 	})
 
-	app.Get("/rules", func(c *fiber.Ctx) error { // Согласие с правила на сайте
-		return c.Render("rules", fiber.Map{
+	app.Get("/protected", func(c *fiber.Ctx) error { // Согласие с правила на сайте
+		return c.Render("protected", fiber.Map{
 			"siteDomain": siteDomain,
 			"fileServer": fileServer,
 		})

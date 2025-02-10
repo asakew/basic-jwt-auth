@@ -54,7 +54,7 @@ func Login(c *fiber.Ctx) error {
 	})
 }
 
-// Protected route
+// Protected route, create html templates
 func Protected(c *fiber.Ctx) error {
 	// Get the user from the context and return it
 	user := c.Locals("user").(*jtoken.Token)

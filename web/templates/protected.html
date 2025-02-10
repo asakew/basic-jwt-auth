@@ -31,10 +31,10 @@
     <button id="copyButton">Копировать токен</button>
     <script type="text/javascript">
         document.getElementById('copyButton').addEventListener('click', function() {
-            var tokenText = document.getElementById('tokenDisplay').innerText;
+            const tokenText = document.getElementById('tokenDisplay').innerText;
 
             // Создаем временный элемент для копирования текста
-            var tempInput = document.createElement('input');
+            const tempInput = document.createElement('input');
             tempInput.value = tokenText;
             document.body.appendChild(tempInput);
 

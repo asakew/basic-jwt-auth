@@ -9,12 +9,17 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
+	"github.com/gofiber/template/html/v2"
 )
 
 func main() {
 	// Create a new Fiber instance
-	app := fiber.New()
+	engine := html.New("./web/templates", ".html")
 
+	app := fiber.New(fiber.Config{
+		Views: engine, // Load templates
+	})
+	
 	// Middleware logging
 	app.Use(logger.New())
 	app.Use(recover.New())
