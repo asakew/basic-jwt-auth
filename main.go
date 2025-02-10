@@ -13,13 +13,13 @@ import (
 )
 
 func main() {
-	// Create a new Fiber instance
-	engine := html.New("./web/templates", ".html")
+
+	engine := html.New("./web/templates", ".html") // Load HTML templates
 
 	app := fiber.New(fiber.Config{
-		Views: engine, // Load templates
+		Views: engine, // Load HTML templates
 	})
-	
+
 	// Middleware logging
 	app.Use(logger.New())
 	app.Use(recover.New())
