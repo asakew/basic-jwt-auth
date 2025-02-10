@@ -1,6 +1,6 @@
 module github.com/solrac97gr/basic-jwt-auth
 
-go 1.19
+go 1.23.4
 
 require (
 	github.com/gofiber/fiber/v2 v2.43.0 // direct
