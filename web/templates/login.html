@@ -77,7 +77,7 @@
                 // Store the JWT token
                 localStorage.setItem('token', data.token);
                 // Redirect to the appropriate dashboard
-                window.location.href = data.dashboard;
+                window.location.href = "/protected";
             } else {
                 errorElement.textContent = data.error; // Display error message
             }

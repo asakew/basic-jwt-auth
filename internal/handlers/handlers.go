@@ -10,7 +10,6 @@ import (
 	jtoken "github.com/golang-jwt/jwt/v4"
 )
 
-// Login route
 func Login(c *fiber.Ctx) error {
 	// Extract the credentials from the request body
 	loginRequest := new(models.LoginRequest)
@@ -54,7 +53,7 @@ func Login(c *fiber.Ctx) error {
 	})
 }
 
-// Protected route, create html templates
+// create html templates
 func Protected(c *fiber.Ctx) error {
 	// Get the user from the context and return it
 	user := c.Locals("user").(*jtoken.Token)
