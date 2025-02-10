@@ -13,7 +13,6 @@ import (
 )
 
 func main() {
-
 	engine := html.New("./web/templates", ".html") // Load HTML templates
 
 	app := fiber.New(fiber.Config{
@@ -37,7 +36,6 @@ func main() {
 
 	routes.HTMLRendering(app) // Load HTML templates
 
-	// Listen on port 3000
 	err := app.Listen(":3003")
 	if err != nil {
 		return
