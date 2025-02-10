@@ -4,6 +4,7 @@ import (
 	"basic-jwt-auth/config"
 	"basic-jwt-auth/internal/handlers"
 	"basic-jwt-auth/internal/middlewares"
+	"basic-jwt-auth/internal/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -28,6 +29,8 @@ func main() {
 
 	// Create a protected route
 	app.Get("/protected", jwt, handlers.Protected)
+
+	routes.HTMLRendering(app) // Load HTML templates
 
 	// Listen on port 3000
 	err := app.Listen(":3003")

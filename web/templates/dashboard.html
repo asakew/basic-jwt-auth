@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .dashboard-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 12px #aaa;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <h2>Welcome to your Admin Dashboard</h2>
+    <p>Your token: <span id="tokenDisplay">Loading...</span></p>
+
+    <br>
+    <button id="copyButton">Копировать токен</button>
+    <script type="text/javascript">
+        document.getElementById('copyButton').addEventListener('click', function() {
+            var tokenText = document.getElementById('tokenDisplay').innerText;
+
+            // Создаем временный элемент для копирования текста
+            var tempInput = document.createElement('input');
+            tempInput.value = tokenText;
+            document.body.appendChild(tempInput);
+
+            // Выделяем текст в элементе
+            tempInput.select();
+            document.execCommand('copy');
+
+            // Удаляем временный элемент
+            document.body.removeChild(tempInput);
+
+            alert('Токен скопирован: ' + tokenText); // Уведомление о копировании
+        });
+    </script>
+
+
+    <hr>
+    <button id="logoutButton">Logout</button>
+</div>
+
+
+<div class="dashboard-container">
+    <form action="/admin/createBlog" method="post">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="5" required></textarea>
+        </div>
+        <button type="submit">Create Blog</button>
+    </form>
+</div>
+
+<script>
+    window.onload = function() {
+        // Retrieve and display the token from localStorage
+        const token = localStorage.getItem('token');
+        document.getElementById('tokenDisplay').innerText = token ? token : "No token found.";
+
+        // Log out function
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            localStorage.removeItem('token'); // Remove token from localStorage
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Remove token cookie
+            window.location.href = '/'; // Redirect to homepage or login page
+        });
+    };
+</script>
+</body>
+</html>
