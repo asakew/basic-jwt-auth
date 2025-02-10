@@ -19,7 +19,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 	// Find the user by credentials
-	user, err := repository.FindByCredentials(loginRequest.Email, loginRequest.Password)
+	user, err := repository.FindByCredentials(loginRequest.Login, loginRequest.Password)
 	if err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 			"error": err.Error(),
@@ -31,7 +31,7 @@ func Login(c *fiber.Ctx) error {
 	// Create the JWT claims, which includes the user ID and expiry time
 	claims := jtoken.MapClaims{
 		"ID":    user.ID,
-		"email": user.Email,
+		"login": user.Login,
 		"fav":   user.FavoritePhrase,
 		"exp":   time.Now().Add(day * 1).Unix(),
 	}
@@ -58,7 +58,7 @@ func Protected(c *fiber.Ctx) error {
 	// Get the user from the context and return it
 	user := c.Locals("user").(*jtoken.Token)
 	claims := user.Claims.(jtoken.MapClaims)
-	email := claims["email"].(string)
+	login := claims["Login"].(string)
 	favPhrase := claims["fav"].(string)
-	return c.SendString("Welcome 👋" + email + " " + favPhrase)
+	return c.SendString("Welcome 👋" + login + " " + favPhrase)
 }
