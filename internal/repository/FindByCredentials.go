@@ -3,7 +3,7 @@ package repository
 import (
 	"errors"
 
-	"github.com/solrac97gr/basic-jwt-auth/models"
+	"basic-jwt-auth/internal/models"
 )
 
 // Simulate a database call

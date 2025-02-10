@@ -3,11 +3,11 @@ package handlers
 import (
 	"time"
 
+	"basic-jwt-auth/config"
+	"basic-jwt-auth/internal/models"
+	"basic-jwt-auth/internal/repository"
 	"github.com/gofiber/fiber/v2"
 	jtoken "github.com/golang-jwt/jwt/v4"
-	"github.com/solrac97gr/basic-jwt-auth/config"
-	"github.com/solrac97gr/basic-jwt-auth/models"
-	"github.com/solrac97gr/basic-jwt-auth/repository"
 )
 
 // Login route

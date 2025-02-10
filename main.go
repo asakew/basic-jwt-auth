@@ -1,13 +1,13 @@
 package main
 
 import (
+	"basic-jwt-auth/config"
+	"basic-jwt-auth/internal/handlers"
+	"basic-jwt-auth/internal/middlewares"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
-	"github.com/solrac97gr/basic-jwt-auth/config"
-	"github.com/solrac97gr/basic-jwt-auth/handlers"
-	"github.com/solrac97gr/basic-jwt-auth/middlewares"
 )
 
 func main() {

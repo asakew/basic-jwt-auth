@@ -1,4 +1,4 @@
-module github.com/solrac97gr/basic-jwt-auth
+module basic-jwt-auth
 
 go 1.23.4
 
