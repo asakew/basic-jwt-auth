@@ -30,7 +30,7 @@ func main() {
 	app.Get("/protected", jwt, handlers.Protected)
 
 	// Listen on port 3000
-	err := app.Listen(":3001")
+	err := app.Listen(":3003")
 	if err != nil {
 		return
 	}
